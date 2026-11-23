@@ -100,6 +100,7 @@ index=0;answers=[];seconds=0;remaining=quizMode==='tryout'?1800:0;answered=false
 $('quizIntro').style.display='none';$('quizArea').classList.add('show');
 $('timer').textContent=quizMode==='tryout'?'30:00':'00:00';
 showQuestion();
+$('quizArea').scrollIntoView({behavior:'smooth',block:'center'});
 timerHandle=setInterval(()=>{seconds++;if(quizMode==='tryout'){remaining--;if(remaining<=0){$('timer').textContent='00:00';finishQuiz();return;}$('timer').textContent=String(Math.floor(remaining/60)).padStart(2,'0')+':'+String(remaining%60).padStart(2,'0');}else{$('timer').textContent=String(Math.floor(seconds/60)).padStart(2,'0')+':'+String(seconds%60).padStart(2,'0');}},1000);
 }catch(err){console.error('startQuiz error:',err);toast('Latihan gagal dimulai. Muat ulang halaman dan coba lagi.');}
 }
